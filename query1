@@ -1,0 +1,53 @@
+// select all clients that made more then 3 reservaton
+
+select * 
+from client
+where clientid in ( select distinct clientid
+from client natural join reservation
+group by clientid
+having count(*)>3
+)
+
+// all the clients that ordered car where its proddate less then specific year
+select*
+from client
+where clientid in(
+select clientid
+from car natural join reservation
+where proddate<'1/09/2005'
+)
+
+
+// שמות הלקוחות שהזמינו רכב בטווח תאריכים מסוים
+select distinct cname
+from reservation natural join client
+where reservationDate> '1/1/8888' and reservationDate< '1/1/8889'
+
+
+// כל המודלים שהזמינו לקוחות במדינה פלו
+select modelid
+from cars natural reservation natural clients
+where nationality == ISRAEL
+
+// שמות הלקוחות שגרים בUSA
+select cnamefrom client 
+where nationality == USA
+
+
+//כל ההזמנות שהוזמנו בטווח תאריכים מסוים
+
+select*
+from reservation
+where resDate >1/1/1111 and resDate< >1/1/1111
+
+
+// כל הרכבים הפעילים בחברה
+select*
+from cars
+where isActive == 1
+
+// שמות כל הלקוחות שהגיל שלהם קטן מ20
+
+select*
+from client
+where dateOfBirth > GETDATE - 20*365
