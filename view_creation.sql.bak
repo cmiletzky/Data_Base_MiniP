@@ -13,7 +13,7 @@ order by c.branchid
 
 2)
 
-// סך ההכנסות מתחילת שנה נוכחית
+// sum of the all incomes in  current year
 CREATE  VIEW view_profit_company AS
 SELECT   sum(p.sum) as sum_this_year
 FROM elafishe.payments p
